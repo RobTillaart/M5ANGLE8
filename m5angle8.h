@@ -16,6 +16,7 @@
 
 //  prelim error handling
 #define M5ANGLE8_OK                   0x0000
+#define M5ANGLE8_ERR_CHANNEL          0xFF00
 #define M5ANGLE8_ERROR                0xFFFF
 
 
