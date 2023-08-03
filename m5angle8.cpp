@@ -6,19 +6,16 @@
 //     URL: https://github.com/RobTillaart/M5ANGLE8
 
 
-#include <m5angle8.h>
+#include "m5angle8.h"
 
 
+//  REGISTERS
 #define M5ANGLE8_REG_ADDRESS            0xFF
 #define M5ANGLE8_REG_VERSION            0xFE
 #define M5ANGLE8_REG_BASE_ANA12         0x00
 #define M5ANGLE8_REG_BASE_ANA8          0x10
 #define M5ANGLE8_REG_SWITCH             0x20
 #define M5ANGLE8_REG_RGB                0x30
-
-
-
-
 
 
 M5ANGLE8::M5ANGLE8(uint8_t address, TwoWire *wire)
@@ -31,7 +28,6 @@ M5ANGLE8::M5ANGLE8(uint8_t address, TwoWire *wire)
 #if defined (ESP8266) || defined(ESP32)
 bool M5ANGLE8::begin(int dataPin, int clockPin)
 {
-  _wire = &Wire;
   if ((dataPin < 255) && (clockPin < 255))
   {
     _wire->begin(dataPin, clockPin);
@@ -73,7 +69,7 @@ uint8_t M5ANGLE8::getAddress()
 }
 
 
-uint8_t M5ANGLE8::getVersion() 
+uint8_t M5ANGLE8::getVersion()
 {
   return read8(M5ANGLE8_REG_VERSION);
 }
@@ -89,11 +85,15 @@ uint16_t M5ANGLE8::analogRead(uint8_t channel, uint8_t resolution)
   {
     return M5ANGLE8_ERR_CHANNEL;
   }
-  if (resolution == 8)
+  if (resolution <= 8)
   {
     return (uint16_t) read8(M5ANGLE8_REG_BASE_ANA8 + channel);
   }
-  return read16(M5ANGLE8_REG_BASE_ANA12 + (channel << 1));
+  uint16_t value = read16(M5ANGLE8_REG_BASE_ANA12 + (channel << 1));
+  if      (resolution == 11) value >>= 1;
+  else if (resolution == 10) value >>= 2;
+  else if (resolution == 9)  value >>= 3;
+  return value;
 }
 
 
@@ -101,8 +101,8 @@ uint8_t M5ANGLE8::inputSwitch()
 {
   return read8(M5ANGLE8_REG_SWITCH);
 }
-  
-  
+
+
 bool M5ANGLE8::writeRGB(uint8_t channel, uint8_t R, uint8_t G, uint8_t B, uint8_t brightness)
 {
   if (channel > 7)

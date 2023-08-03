@@ -23,7 +23,7 @@
 class M5ANGLE8
 {
 public:
-  M5ANGLE8(uint8_t address = 0x43, TwoWire *wire = &Wire);  // magic nr
+  M5ANGLE8(uint8_t address = M5ANGLE8_DEFAULT_ADDRESS, TwoWire *wire = &Wire);
 
 #if defined (ESP8266) || defined(ESP32)
   bool    begin(int sda, int scl);
@@ -31,13 +31,14 @@ public:
   bool    begin();
   bool    isConnected();
 
-  bool    setAddress(uint8_t address);
+  //  address = 8..119 (NXP spec)
+  bool    setAddress(uint8_t address = M5ANGLE8_DEFAULT_ADDRESS);
   uint8_t getAddress();
   uint8_t getVersion();
 
   //  IO PART
   //  channel    = 0..7
-  //  resolution = 8 0..255) anything else == 12 (0..4095)
+  //  resolution = 8 (0..255) anything else ==> 12 (0..4095)
   uint16_t analogRead(uint8_t channel, uint8_t resolution = 12);
   uint8_t  inputSwitch();
   //  channel    = 0..7
@@ -51,7 +52,7 @@ private:
   uint8_t  _address;
 
   int      _error;
-  
+
   TwoWire* _wire;
 
   bool     write8(uint8_t reg, uint8_t value);
