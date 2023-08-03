@@ -29,7 +29,7 @@ M5ANGLE8::M5ANGLE8(uint8_t address, TwoWire *wire)
 
 
 #if defined (ESP8266) || defined(ESP32)
-bool M5ANGLE8::begin(int dataPin, int clockPin, uint8_t value)
+bool M5ANGLE8::begin(int dataPin, int clockPin)
 {
   _wire = &Wire;
   if ((dataPin < 255) && (clockPin < 255))
