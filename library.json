@@ -1,7 +1,7 @@
 {
   "name": "M5ANGLE8",
   "keywords": "M5ANGLE8, analog, angle.",
-  "description": "Arduino library for m5 8angle 8x12 bit potentiometers.",
+  "description": "Arduino library for M5 8ANGLE 8x12 bit potentiometers.",
   "authors":
   [
     {

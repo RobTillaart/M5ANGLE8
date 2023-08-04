@@ -2,7 +2,7 @@
 //    FILE: m5angle8.cpp
 //  AUTHOR: Rob Tillaart
 // VERSION: 0.1.0
-// PURPOSE: Arduino library for m5 8angle 8 12 bit potentiometers
+// PURPOSE: Arduino library for M5 8ANGLE 8x12 bit potentiometers
 //     URL: https://github.com/RobTillaart/M5ANGLE8
 
 

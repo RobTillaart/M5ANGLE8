@@ -8,7 +8,7 @@
 
 # M5ANGLE8
 
-Arduino library for m5 8angle 8x12 bit potentiometers.
+Arduino library for M5 8ANGLE 8x12 bit potentiometers.
 
 
 ## Description
