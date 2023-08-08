@@ -4,7 +4,7 @@ IDE:    1.8.19
 Notice there is quite some spread over calls,
 so these average numbers are indicative
 
-M5ANGLE8_LIB_VERSION: 0.1.1
+M5ANGLE8_LIB_VERSION: 0.2.0
 
 I2C:	100000
 writeRGB:	952.91

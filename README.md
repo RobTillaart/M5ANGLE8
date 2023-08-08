@@ -26,6 +26,8 @@ Furthermore the library can reverse the range from 0..n => n..0.
 The library has a wrapper function **selectionRead(channel, steps)** around the analogRead 
 to make a selection between 0..steps-1. 
 
+The library can read the state of the mini switch.
+
 The library can set the RGB value and brightness of the 9 LEDS.
 
 First tests are done and the library looks stable now. 
@@ -36,15 +38,14 @@ Feedback is still welcome!
 
 The address range is in theory from 0..127, however the I2C specification
 states it should be between 8 and 119 as some addresses are reserved.
-The default address is 0x43.
+The default address is **0x43** or **67**.
 
 |  clock  |  works  |  notes  |
 |:-------:|:-------:|:--------|
 | 100 KHz |   yes   |
 | 200 KHz |   yes   |
-| 400 KHz |   yes   |  max speed advised, 500K does work but little gain
+| 400 KHz |   yes   |  max speed advised
 | 600 KHz |    no   |
-| 800 KHz |    no   |
 
 See log file performance sketch.
 
@@ -61,11 +62,14 @@ The update performance of LEDs looks stable up to 40x per second in total.
 Beyond that frequency some blocking effects occur. 
 Roughly determined with led_demo.
 
+Missing is an interrupt signal e.g. on change.
+
 
 #### Related
 
 - https://github.com/RobTillaart/GAMMA
 - https://github.com/RobTillaart/map2colour
+- https://github.com/RobTillaart/M5Angle8
 - https://github.com/RobTillaart/M5ROTATE8
 
 
@@ -119,6 +123,7 @@ Returns true.
 #### Must
 
 - improve documentation
+- keep in sync with **M5ROTATE8** where possible.
 
 #### Should
 
