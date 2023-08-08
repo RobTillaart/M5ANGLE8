@@ -1,0 +1,13 @@
+Board:  UNO
+IDE:    1.8.19
+
+Notice there is quite some spread over calls,
+so these numbers are indicative
+
+M5ANGLE8_LIB_VERSION: 0.1.0
+writeRGB:     1044.50
+allOff:       8400
+inputSwitch:  480
+a-read H:     576
+a-read L:     480
+
