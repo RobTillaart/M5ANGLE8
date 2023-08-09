@@ -31,7 +31,12 @@ The library can read the state of the mini switch.
 The library can set the RGB value and brightness of the 9 LEDS.
 
 First tests are done and the library looks stable now. 
-Feedback is still welcome!
+Missing is an interrupt signal e.g. on change. 
+One has to poll all channels for changes which is not efficient. 
+A single byte register that showed change since last read would allow to monitor 
+all 8 potentiometers in one call.  
+
+Feedback is welcome!
 
 
 #### I2C
@@ -61,8 +66,6 @@ that makes it pretty difficult to set a value exactly.
 The update performance of LEDs looks stable up to 40x per second in total.
 Beyond that frequency some blocking effects occur. 
 Roughly determined with led_demo.
-
-Missing is an interrupt signal e.g. on change.
 
 
 #### Related
