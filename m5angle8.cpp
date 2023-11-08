@@ -27,21 +27,6 @@ M5ANGLE8::M5ANGLE8(uint8_t address, TwoWire *wire)
 }
 
 
-#if defined (ESP8266) || defined(ESP32)
-bool M5ANGLE8::begin(int dataPin, int clockPin)
-{
-  if ((dataPin < 255) && (clockPin < 255))
-  {
-    _wire->begin(dataPin, clockPin);
-  } else {
-    _wire->begin();
-  }
-  if (! isConnected()) return false;
-  return true;
-}
-#endif
-
-
 bool M5ANGLE8::begin()
 {
   if (! isConnected()) return false;
@@ -165,7 +150,7 @@ bool M5ANGLE8::allOff()
 }
 
 
-bool M5ANGLE8::writeBrightness(channel, uint8_t brightness)
+bool M5ANGLE8::writeBrightness(uint8_t channel, uint8_t brightness)
 {
   if (channel > 8)
   {

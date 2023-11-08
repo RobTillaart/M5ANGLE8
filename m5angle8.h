@@ -59,7 +59,7 @@ public:
   bool     setAll(uint8_t R, uint8_t G, uint8_t B, uint8_t brightness);
   bool     allOff();
 
-  bool     writeBrightness(channel, uint8_t brightness);
+  bool     writeBrightness(uint8_t channel, uint8_t brightness);
 
 
 private:
