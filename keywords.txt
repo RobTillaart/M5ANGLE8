@@ -21,6 +21,7 @@ inputSwitch	KEYWORD2
 writeRGB	KEYWORD2
 setAll	KEYWORD2
 allOff	KEYWORD2
+writeBrightness	KEYWORD2
 
 
 # Constants (LITERAL1)
