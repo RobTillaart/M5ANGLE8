@@ -9,7 +9,8 @@
 #include "m5angle8.h"
 
 
-M5ANGLE8 MM(&Wire1);
+M5ANGLE8 MM(M5ANGLE8_DEFAULT_ADDRESS, &Wire1);  //  0x43
+
 
 void setup()
 {
